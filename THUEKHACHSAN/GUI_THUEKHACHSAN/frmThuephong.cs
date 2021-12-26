@@ -1,0 +1,140 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using BUS_THUEKHACHSAN;
+
+namespace GUI_THUEKHACHSAN
+{
+    public partial class frmThuephong : Form
+    {
+        BUS_Thuephong busthuephong = new BUS_Thuephong();
+        BUS_Phong busphong = new BUS_Phong();
+
+        public frmThuephong()
+        {
+            InitializeComponent();
+            dgvPhong.DataSource = busphong.getListPhongtrong();
+            for (int i = 1; i <= 5; i++) cbbTang.Items.Add(i.ToString());
+            cbbLoaiphong.Items.Add("VIP");
+            cbbLoaiphong.Items.Add("Superior");
+            cbbLoaiphong.Items.Add("Standard");
+            cbbSonguoitoida.Items.Add(2);
+            cbbSonguoitoida.Items.Add(4);
+            cbbTang.Focus();
+            txtTennhanvien.Text = nhanvien.TEN;
+            txtManhanvien.Text = nhanvien.ID.ToString();
+        }
+
+        private void btnThuephong_Click(object sender, EventArgs e )
+        {
+            if (txtMaphong.Text.Trim() == "")
+            {
+                MessageBox.Show("Bạn phải chọn phòng", "Information");
+            } else if (txtHotenkhach.Text.Trim() == "")
+            {
+                txtHotenkhach.Focus();
+                MessageBox.Show("Không được bỏ trống tên khách", "Information");
+            } else if (txtSoCMND.Text.Trim() == "")
+            {
+                txtSoCMND.Focus();
+                MessageBox.Show("Không được bỏ trống Số chứng minh nhân dân của khách", "Information");
+            } else if (txtSoluonguoi.Text.Trim() == "")
+            {
+                txtSoluonguoi.Focus();
+                MessageBox.Show("Không được bỏ trống số lượng người", "Information");
+            }
+            else if (dtThuephong.Text.Trim() == "")
+            {
+                dtThuephong.Focus();
+                MessageBox.Show("Không được bỏ trống ngày thuê phòng", "Information");
+            }
+            else if (int.Parse(txtSoluonguoi.Text.Trim())>(int)dgvPhong[4,dgvPhong.CurrentRow.Index].Value)
+            {
+                
+                txtSoluonguoi.Focus();
+                MessageBox.Show("Số người không được lớn hơn số người tối đa của phòng", "Information");
+            }
+            else 
+            {
+                bool tp =busthuephong.insertThuephong(txtHotenkhach.Text, txtSoCMND.Text, long.Parse(txtMaphong.Text),DateTime.Parse(dtThuephong.Text), long.Parse(txtManhanvien.Text),  int.Parse(txtSoluonguoi.Text));
+                if(tp) MessageBox.Show("Thuê phòng thành công", "Information");
+                else MessageBox.Show("Thuê phòng thất bại", "Information");
+                dgvPhong.DataSource= busphong.getListPhongtrong();
+                cbbTang.Focus();
+                cbbTang.Text = "";
+                cbbLoaiphong.Text = "";
+                cbbSonguoitoida.Text = "";
+                txtMaphong.Text = "";
+                txtTenphong.Text = "";
+                txtTang.Text = "";
+                txtLoaiphong.Text = "";
+                txtGiathuephong.Text = "";
+                txtHotenkhach.Text = "";
+                txtSoCMND.Text = "";
+                txtSoluonguoi.Text = "";
+                dtThuephong.Text = "";
+
+            }
+        }
+
+        private void btnTimkiem_Click(object sender, EventArgs e)
+        {
+
+            if (cbbTang.SelectedItem == null && cbbLoaiphong.SelectedItem == null && cbbSonguoitoida.SelectedItem == null)
+                dgvPhong.DataSource = busphong.getListPhongtrong();
+            else if (cbbTang.SelectedItem != null && cbbLoaiphong.SelectedItem == null && cbbSonguoitoida.SelectedItem == null)
+                dgvPhong.DataSource = busphong.timkiemPhongtrongBytang(cbbTang.SelectedItem.ToString());
+            else if (cbbTang.SelectedItem == null && cbbLoaiphong.SelectedItem != null && cbbSonguoitoida.SelectedItem == null)
+                dgvPhong.DataSource = busphong.timkiemPhongtrongByloaiphong(cbbLoaiphong.SelectedItem.ToString());
+            else if (cbbTang.SelectedItem == null && cbbLoaiphong.SelectedItem == null && cbbSonguoitoida.SelectedItem != null)
+                dgvPhong.DataSource = busphong.timkiemPhongtrongBysonguoitoida(cbbSonguoitoida.SelectedItem.ToString());
+            else if (cbbTang.SelectedItem != null && cbbLoaiphong.SelectedItem != null && cbbSonguoitoida.SelectedItem == null)
+                dgvPhong.DataSource = busphong.timkiemPhongtrongBytangvaloaiphong(cbbTang.SelectedItem.ToString(), cbbLoaiphong.SelectedItem.ToString());
+            else if (cbbTang.SelectedItem == null && cbbLoaiphong.SelectedItem != null && cbbSonguoitoida.SelectedItem != null)
+                dgvPhong.DataSource = busphong.timkiemPhongtrongByloaiphongvasonguoitoida(cbbLoaiphong.SelectedItem.ToString() ,cbbSonguoitoida.SelectedItem.ToString());
+            else if (cbbTang.SelectedItem != null && cbbLoaiphong.SelectedItem == null && cbbSonguoitoida.SelectedItem != null)
+                dgvPhong.DataSource = busphong.timkiemPhongtrongBytangvasonguoitoida( cbbTang.SelectedItem.ToString(),cbbSonguoitoida.SelectedItem.ToString());
+            else if (cbbTang.SelectedItem != null && cbbLoaiphong.SelectedItem != null && cbbSonguoitoida.SelectedItem != null)
+                dgvPhong.DataSource = busphong.timkiemPhongtrong(cbbTang.SelectedItem.ToString(),cbbLoaiphong.SelectedItem.ToString(),cbbSonguoitoida.SelectedItem.ToString());
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void dgvPhong_Click(object sender, EventArgs e)
+        {
+            int i = dgvPhong.CurrentRow.Index;
+            txtMaphong.Text = dgvPhong[0, i].Value.ToString();
+            txtTenphong.Text = dgvPhong[1, i].Value.ToString();
+            txtTang.Text = dgvPhong[2, i].Value.ToString();
+            txtGiathuephong.Text = dgvPhong[5, i].Value.ToString();
+            txtLoaiphong.Text = dgvPhong[3, i].Value.ToString();
+            txtHotenkhach.Focus();
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            cbbTang.Focus();
+            cbbTang.Text = "";
+            cbbLoaiphong.Text = "";
+            cbbSonguoitoida.Text = "";
+            txtMaphong.Text = "";
+            txtTenphong.Text = "";
+            txtTang.Text = "";
+            txtLoaiphong.Text = "";
+            txtGiathuephong.Text = "";
+            txtHotenkhach.Text = "";
+            txtSoCMND.Text = "";
+            txtSoluonguoi.Text = "";
+            dtThuephong.Text = "";
+        }
+    }
+}

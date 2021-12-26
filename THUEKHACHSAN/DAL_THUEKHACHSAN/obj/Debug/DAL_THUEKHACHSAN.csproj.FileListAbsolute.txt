@@ -1,0 +1,6 @@
+D:\nam4\framework(C#)\THUEKHACHSAN\DAL_THUEKHACHSAN\bin\Debug\DAL_THUEKHACHSAN.dll
+D:\nam4\framework(C#)\THUEKHACHSAN\DAL_THUEKHACHSAN\bin\Debug\DAL_THUEKHACHSAN.pdb
+D:\nam4\framework(C#)\THUEKHACHSAN\DAL_THUEKHACHSAN\obj\Debug\DAL_THUEKHACHSAN.csproj.CoreCompileInputs.cache
+D:\nam4\framework(C#)\THUEKHACHSAN\DAL_THUEKHACHSAN\obj\Debug\DAL_THUEKHACHSAN.dll
+D:\nam4\framework(C#)\THUEKHACHSAN\DAL_THUEKHACHSAN\obj\Debug\DAL_THUEKHACHSAN.pdb
+D:\nam4\framework(C#)\THUEKHACHSAN\DAL_THUEKHACHSAN\obj\Debug\DAL_THUEKHACHSAN.csproj.AssemblyReference.cache
