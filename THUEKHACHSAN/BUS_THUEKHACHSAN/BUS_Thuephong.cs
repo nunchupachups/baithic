@@ -55,5 +55,15 @@ namespace BUS_THUEKHACHSAN
         {
             return dalthuephong.deleteThuephong(mahoadon);
         }
+
+        public bool taoHoadon(long mahoadon)
+        {
+            return dalthuephong.taoHoadon(mahoadon);
+        }
+
+        public DataTable getHoadon()
+        {
+            return dalthuephong.getHoadon();
+        }
     }
 }

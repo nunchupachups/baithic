@@ -12,31 +12,10 @@ namespace BUS_THUEKHACHSAN
     public class BUS_Phong
     {
         DAL_Phong dalPhong = new DAL_Phong();
-        public DataTable getListPhong1()
+        public DataTable getListPhongbytang(int tang)
         {
-            return dalPhong.getListPhong1();
+            return dalPhong.getListPhongbytang(tang);
         }
-
-        public DataTable getListPhong2()
-        {
-            return dalPhong.getListPhong2();
-        }
-
-        public DataTable getListPhong3()
-        {
-            return dalPhong.getListPhong3();
-        }
-
-        public DataTable getListPhong4()
-        {
-            return dalPhong.getListPhong4();
-        }
-
-        public DataTable getListPhong5()
-        {
-            return dalPhong.getListPhong5();
-        }
-
 
         public DataTable getListPhongtrong()
         {

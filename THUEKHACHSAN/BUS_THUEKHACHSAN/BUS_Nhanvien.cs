@@ -17,5 +17,10 @@ namespace BUS_THUEKHACHSAN
         {
             return dalnhanvien.ktdn(username, password);
         }
+
+        public DataTable getNhanvienByID(long id)
+        {
+            return dalnhanvien.getNhanvienByID(id);
+        }
     }
 }

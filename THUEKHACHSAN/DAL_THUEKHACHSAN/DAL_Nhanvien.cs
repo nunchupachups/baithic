@@ -18,5 +18,14 @@ namespace DAL_THUEKHACHSAN
             dal.Fill(dalNhanvien);
             return dalNhanvien;
         }
+
+        public DataTable getNhanvienByID(long id)
+        {
+            string str = string.Format("select * from nhanvien where idnhanvien='{0}'", id);
+            SqlDataAdapter dal = new SqlDataAdapter(str, con);
+            DataTable dalNhanvien = new DataTable();
+            dal.Fill(dalNhanvien);
+            return dalNhanvien;
+        }
     }
 }

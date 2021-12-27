@@ -26,10 +26,10 @@ namespace GUI_THUEKHACHSAN
 
         private void btnTimkiem_Click(object sender, EventArgs e)
         {
-            if (tkTenphong.Text == null && tkTenkhach.Text == null) dgvThuephong.DataSource = busThuephong.getListThuephong(1);
-            else if (tkTenphong.Text != null && tkTenkhach.Text == null) dgvThuephong.DataSource = busThuephong.timkiemBytenphong(tkTenphong.Text,1);
-            else if (tkTenphong.Text == null && tkTenkhach.Text != null) dgvThuephong.DataSource = busThuephong.timkiemBytenkhach(tkTenkhach.Text,1);
-            else if (tkTenphong.Text != null && tkTenkhach.Text != null) dgvThuephong.DataSource = busThuephong.timkiem(tkTenphong.Text, tkTenkhach.Text,1);
+            if (tkTenphong.Text.Equals("") && tkTenkhach.Text.Equals("")) dgvThuephong.DataSource = busThuephong.getListThuephong(1);
+            else if (!tkTenphong.Text.Equals("") && tkTenkhach.Text.Equals("")) dgvThuephong.DataSource = busThuephong.timkiemBytenphong(tkTenphong.Text,1);
+            else if (tkTenphong.Text.Equals("") && !tkTenkhach.Text.Equals("")) dgvThuephong.DataSource = busThuephong.timkiemBytenkhach(tkTenkhach.Text,1);
+            else if (!tkTenphong.Text.Equals("") && !tkTenkhach.Text.Equals("")) dgvThuephong.DataSource = busThuephong.timkiem(tkTenphong.Text, tkTenkhach.Text,1);
         }
 
         private void dgvThuephong_Click(object sender, EventArgs e)

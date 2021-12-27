@@ -33,38 +33,82 @@ namespace GUI_THUEKHACHSAN
 
         private void btnThuephong_Click(object sender, EventArgs e )
         {
+            bool kt = true;
+            foreach (char c in txtSoCMND.Text)
+            {
+                if ((byte)c < 48 || (byte)c > 57)
+                {
+                    kt = false;
+                    break;
+                }
+            }
+
+            bool kt1 = true;
+            foreach (char c in txtSoluonguoi.Text)
+            {
+                if ((byte)c < 48 || (byte)c > 57)
+                {
+                    kt1 = false;
+                    break;
+                }
+            }
+            bool kt2 = true;
+            foreach (char c in txtHotenkhach.Text)
+            {
+                if ((byte)c < 65 || (byte)c > 90&&(byte)c < 97 || (byte)c >122)
+                {
+                    kt2 = false;
+                    break;
+                }
+            }
+
             if (txtMaphong.Text.Trim() == "")
             {
-                MessageBox.Show("Bạn phải chọn phòng", "Information");
+                MessageBox.Show("Bạn phải chọn phòng", "Thông báo");
             } else if (txtHotenkhach.Text.Trim() == "")
             {
                 txtHotenkhach.Focus();
-                MessageBox.Show("Không được bỏ trống tên khách", "Information");
+                MessageBox.Show("Không được bỏ trống tên khách", "Thông báo");
             } else if (txtSoCMND.Text.Trim() == "")
             {
                 txtSoCMND.Focus();
-                MessageBox.Show("Không được bỏ trống Số chứng minh nhân dân của khách", "Information");
+                MessageBox.Show("Không được bỏ trống Số chứng minh nhân dân của khách", "Thông báo");
             } else if (txtSoluonguoi.Text.Trim() == "")
             {
                 txtSoluonguoi.Focus();
-                MessageBox.Show("Không được bỏ trống số lượng người", "Information");
+                MessageBox.Show("Không được bỏ trống số lượng người", "Thông báo");
             }
             else if (dtThuephong.Text.Trim() == "")
             {
                 dtThuephong.Focus();
-                MessageBox.Show("Không được bỏ trống ngày thuê phòng", "Information");
+                MessageBox.Show("Không được bỏ trống ngày thuê phòng", "Thông báo");
+            }
+            else if (!kt)
+            {
+                txtSoCMND.Focus();
+                MessageBox.Show("Số CMND chỉ được chứa ký tự số", "Thông báo");
+            }
+            else if (!kt1)
+            {
+                txtSoluonguoi.Focus();
+                MessageBox.Show("Số người chỉ được chứa ký tự số", "Thông báo");
+            }
+            else if (!kt2)
+            {
+                txtHotenkhach.Focus();
+                MessageBox.Show("Họ tên khách chỉ được chứa ký tự chữ", "Thông báo");
             }
             else if (int.Parse(txtSoluonguoi.Text.Trim())>(int)dgvPhong[4,dgvPhong.CurrentRow.Index].Value)
             {
                 
                 txtSoluonguoi.Focus();
-                MessageBox.Show("Số người không được lớn hơn số người tối đa của phòng", "Information");
+                MessageBox.Show("Số người không được lớn hơn số người tối đa của phòng", "Thông báo");
             }
             else 
             {
                 bool tp =busthuephong.insertThuephong(txtHotenkhach.Text, txtSoCMND.Text, long.Parse(txtMaphong.Text),DateTime.Parse(dtThuephong.Text), long.Parse(txtManhanvien.Text),  int.Parse(txtSoluonguoi.Text));
-                if(tp) MessageBox.Show("Thuê phòng thành công", "Information");
-                else MessageBox.Show("Thuê phòng thất bại", "Information");
+                if(tp) MessageBox.Show("Thuê phòng thành công", "Thông báo");
+                else MessageBox.Show("Thuê phòng thất bại", "Thông báo");
                 dgvPhong.DataSource= busphong.getListPhongtrong();
                 cbbTang.Focus();
                 cbbTang.Text = "";

@@ -54,13 +54,6 @@ namespace GUI_THUEKHACHSAN
         private void btnDoiphong_Click(object sender, EventArgs e)
         {
             DataTable dt = busthuephong.getThongtinthuephong(mahoadondoi.MAHOADON);
-
-            Console.WriteLine(dt.Rows[0]["tenkhach"].ToString());
-            Console.WriteLine(dt.Rows[0]["soCMND"].ToString());
-            Console.WriteLine(maphonghitiet.MAPHONG);
-            Console.WriteLine(DateTime.Parse(dt.Rows[0]["ngaythue"].ToString()));
-            Console.WriteLine(int.Parse(dt.Rows[0]["songuoi"].ToString()));
-            Console.WriteLine(mahoadondoi.MAHOADON);
             busthuephong.updateThuephong(dt.Rows[0]["tenkhach"].ToString(), dt.Rows[0]["soCMND"].ToString(), maphonghitiet.MAPHONG, DateTime.Parse(dt.Rows[0]["ngaythue"].ToString()), int.Parse(dt.Rows[0]["songuoi"].ToString()),mahoadondoi.MAHOADON );
             MessageBox.Show("Đổi phòng thành công", "Thông báo");
             Close();

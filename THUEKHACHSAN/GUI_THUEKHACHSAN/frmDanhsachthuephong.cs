@@ -110,6 +110,10 @@ namespace GUI_THUEKHACHSAN
         {
             busphong.updateTinhtrangPhong(long.Parse(txtMaphong.Text), 2);
             busThuephong.traPhong(long.Parse(txtMahoadon.Text), nhanvien.ID);
+            busThuephong.taoHoadon(long.Parse(txtMahoadon.Text));
+            frmInhoadon inhd = new frmInhoadon();
+            inhd.Show();
+
             dgvThuephong.DataSource = busThuephong.getListThuephong(0);
             tkTenphong.Focus();
             btnHuyphong.Enabled = btnDoiphong.Enabled = btnTraphong.Enabled = false;
@@ -127,6 +131,9 @@ namespace GUI_THUEKHACHSAN
             txtMahoadon.Text = "";
             dtTraphong.Text = "";
             lblTongtien.Text = "";
+            
+            
+
         }
 
         private void btnDoiphong_Click(object sender, EventArgs e)

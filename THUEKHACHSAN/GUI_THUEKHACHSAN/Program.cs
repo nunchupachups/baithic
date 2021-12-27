@@ -17,6 +17,7 @@ namespace GUI_THUEKHACHSAN
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new GUI_Menu());
+            //Application.Run(new a());
         }
     }
     class mySave

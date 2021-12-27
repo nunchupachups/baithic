@@ -135,7 +135,7 @@ namespace GUI_THUEKHACHSAN
             // btnThoat
             // 
             this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.Location = new System.Drawing.Point(1179, 822);
+            this.btnThoat.Location = new System.Drawing.Point(1355, 22);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(109, 57);
             this.btnThoat.TabIndex = 6;
@@ -147,7 +147,7 @@ namespace GUI_THUEKHACHSAN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1366, 914);
+            this.ClientSize = new System.Drawing.Size(1484, 844);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.flp5);
             this.Controls.Add(this.flp2);

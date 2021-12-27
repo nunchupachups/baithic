@@ -70,15 +70,33 @@ namespace GUI_THUEKHACHSAN
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            int tinhtrang;
-            if (cbbTinhtrang.Text.Equals("Phòng trống")) tinhtrang = 0;
-            else if (cbbTinhtrang.Text.Equals("Phòng đã cho thuê")) tinhtrang = 1;
-            else if (cbbTinhtrang.Text.Equals("Phòng đang dọn dẹp")) tinhtrang = 2;
-            else tinhtrang = 3;
-            busphong.updatePhong(long.Parse(txtMaphong.Text), txtTenphong.Text, int.Parse(cbbTang.Text), cbbLoaiphong.Text, int.Parse(cbbSonguoitoida.Text),float.Parse(txtDongia.Text), txtMota.Text, tinhtrang);
-            MessageBox.Show("Sửa phòng thành công", "Thông báo");
-            Close();
-            LoadChitietphong();
+            bool kt=true;
+            foreach(char c in txtDongia.Text)
+            {
+                if ((byte)c < 48 || (byte)c > 57)
+                {
+                    kt = false;
+                    break;
+                }
+            }
+            if (kt)
+            {
+                int tinhtrang;
+                if (cbbTinhtrang.Text.Equals("Phòng trống")) tinhtrang = 0;
+                else if (cbbTinhtrang.Text.Equals("Phòng đã cho thuê")) tinhtrang = 1;
+                else if (cbbTinhtrang.Text.Equals("Phòng đang dọn dẹp")) tinhtrang = 2;
+                else tinhtrang = 3;
+
+                busphong.updatePhong(long.Parse(txtMaphong.Text), txtTenphong.Text, int.Parse(cbbTang.Text), cbbLoaiphong.Text, int.Parse(cbbSonguoitoida.Text), float.Parse(txtDongia.Text), txtMota.Text, tinhtrang);
+                MessageBox.Show("Sửa phòng thành công", "Thông báo");
+                Close();
+                LoadChitietphong();
+            }
+            else
+            {
+                MessageBox.Show("Đơn giá chỉ được chứa ký tự số", "Thông báo");
+            }
+            
         }
     }
 }

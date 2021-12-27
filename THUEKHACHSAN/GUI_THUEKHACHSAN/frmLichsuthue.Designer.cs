@@ -242,9 +242,9 @@ namespace GUI_THUEKHACHSAN
             // btnThoat
             // 
             this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.Location = new System.Drawing.Point(1212, 604);
+            this.btnThoat.Location = new System.Drawing.Point(1291, 604);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(203, 67);
+            this.btnThoat.Size = new System.Drawing.Size(124, 67);
             this.btnThoat.TabIndex = 115;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;

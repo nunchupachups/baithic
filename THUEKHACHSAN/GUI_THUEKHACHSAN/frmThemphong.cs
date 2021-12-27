@@ -35,8 +35,21 @@ namespace GUI_THUEKHACHSAN
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if(txtTenphong.Text.Trim().Equals("")||txtTenphong==null||cbbLoaiphong.SelectedItem.ToString().Trim().Equals("")||cbbLoaiphong==null||cbbSonguoitoida.SelectedItem.ToString().Trim().Equals("")||cbbSonguoitoida==null||txtDongia.Text.Trim().Equals("")||txtDongia==null||txtMota.Text.Trim().Equals("")||txtMota==null)
+            bool kt = true;
+            foreach (char c in txtDongia.Text)
+            {
+                if ((byte)c < 48 || (byte)c > 57)
+                {
+                    kt = false;
+                    break;
+                }
+            }
+            if (txtTenphong.Text.Trim().Equals("")||txtTenphong==null||cbbLoaiphong.SelectedItem.ToString().Trim().Equals("")||cbbLoaiphong==null||cbbSonguoitoida.SelectedItem.ToString().Trim().Equals("")||cbbSonguoitoida==null||txtDongia.Text.Trim().Equals("")||txtDongia==null||txtMota.Text.Trim().Equals("")||txtMota==null)
                 MessageBox.Show("Bạn phải nhập đầy đủ thông tin", "Thông báo");
+            else if (!kt)
+            {
+                MessageBox.Show("Đơn giá chỉ được chứa ký tự số", "Thông báo");
+            }
             else
             {
                 busphong.insertPhong(txtTenphong.Text, int.Parse(txtTang.Text), cbbLoaiphong.SelectedItem.ToString(), int.Parse(cbbSonguoitoida.SelectedItem.ToString()), float.Parse(txtDongia.Text), txtMota.Text, 0);

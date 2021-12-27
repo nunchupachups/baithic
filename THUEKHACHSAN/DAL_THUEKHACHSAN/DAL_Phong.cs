@@ -10,45 +10,9 @@ namespace DAL_THUEKHACHSAN
 {
     public class DAL_Phong:DBConnection
     {
-        public DataTable getListPhong1()
+        public DataTable getListPhongbytang(int tang)
         {
-            string str = string.Format("select * from phong where tang=1");
-            SqlDataAdapter dal = new SqlDataAdapter(str, con);
-            DataTable dalPhong = new DataTable();
-            dal.Fill(dalPhong);
-            return dalPhong;
-        }
-
-        public DataTable getListPhong2()
-        {
-            string str = string.Format("select * from phong where tang=2");
-            SqlDataAdapter dal = new SqlDataAdapter(str, con);
-            DataTable dalPhong = new DataTable();
-            dal.Fill(dalPhong);
-            return dalPhong;
-        }
-
-        public DataTable getListPhong3()
-        {
-            string str = string.Format("select * from phong where tang=3");
-            SqlDataAdapter dal = new SqlDataAdapter(str, con);
-            DataTable dalPhong = new DataTable();
-            dal.Fill(dalPhong);
-            return dalPhong;
-        }
-
-        public DataTable getListPhong4()
-        {
-            string str = string.Format("select * from phong where tang=4");
-            SqlDataAdapter dal = new SqlDataAdapter(str, con);
-            DataTable dalPhong = new DataTable();
-            dal.Fill(dalPhong);
-            return dalPhong;
-        }
-
-        public DataTable getListPhong5()
-        {
-            string str = string.Format("select * from phong where tang=5");
+            string str = string.Format("select * from phong where tang='{0}'", tang);
             SqlDataAdapter dal = new SqlDataAdapter(str, con);
             DataTable dalPhong = new DataTable();
             dal.Fill(dalPhong);
@@ -138,7 +102,7 @@ namespace DAL_THUEKHACHSAN
 
         public bool insertPhong(string tenphong, int tang, string loaiphong, int songuoitoida, float dongia, string mota, int tinhtrang)
         {
-            string str = string.Format("insert into phong(tenphong, tang, loaiphong, songuoitoida, dongia, mota, tinhtrang) values('{0}','{1}','{2}','{3}','{4}',N'{5}','{6}')", tenphong, tang, loaiphong, songuoitoida, dongia, mota, tinhtrang);
+            string str = string.Format("insert into phong(tenphong, tang, loaiphong, songuoitoida, dongia, mota, tinhtrang) values('N{0}','{1}','{2}','{3}','{4}',N'{5}','{6}')", tenphong, tang, loaiphong, songuoitoida, dongia, mota, tinhtrang);
             try
             {
                 con.Open();
@@ -155,7 +119,7 @@ namespace DAL_THUEKHACHSAN
 
         public bool updatePhong(long maphong, string tenphong, int tang, string loaiphong, int songuoitoida, float dongia, string mota, int tinhtrang)
         {
-            string str = string.Format("update phong set tenphong = N'{0}', tang = '{1}', loaiphong = '{2}', songuoitoida = '{3}', dongia = '{4}', mota = '{5}', tinhtrang = '{6}' where maphong = '{7}'", tenphong, tang, loaiphong, songuoitoida, dongia, mota, tinhtrang, maphong);
+            string str = string.Format("update phong set tenphong = N'{0}', tang = '{1}', loaiphong = '{2}', songuoitoida = '{3}', dongia = '{4}', mota = N'{5}', tinhtrang = '{6}' where maphong = '{7}'", tenphong, tang, loaiphong, songuoitoida, dongia, mota, tinhtrang, maphong);
             try
             {
                 con.Open();

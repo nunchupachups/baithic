@@ -29,7 +29,7 @@ namespace GUI_THUEKHACHSAN
             flp4.Controls.Clear();
             flp5.Controls.Clear();
             phong = new List<phongItem>();
-            DataTable listphong = busphong.getListPhong1();
+            DataTable listphong = busphong.getListPhongbytang(1);
             
 
             for (int i = 0; i < listphong.Rows.Count; i++)
@@ -62,7 +62,7 @@ namespace GUI_THUEKHACHSAN
             }
 
             phong.Clear();
-            listphong = busphong.getListPhong2();
+            listphong = busphong.getListPhongbytang(2);
             for (int i = 0; i < listphong.Rows.Count; i++)
             {
                 phongItem a = new phongItem();
@@ -93,7 +93,7 @@ namespace GUI_THUEKHACHSAN
 
 
             phong.Clear();
-            listphong = busphong.getListPhong3();
+            listphong = busphong.getListPhongbytang(3);
             for (int i = 0; i < listphong.Rows.Count; i++)
             {
                 phongItem a = new phongItem();
@@ -123,7 +123,7 @@ namespace GUI_THUEKHACHSAN
             }
 
             phong.Clear();
-            listphong = busphong.getListPhong4();
+            listphong = busphong.getListPhongbytang(4);
             for (int i = 0; i < listphong.Rows.Count; i++)
             {
                 phongItem a = new phongItem();
@@ -153,7 +153,7 @@ namespace GUI_THUEKHACHSAN
             }
 
             phong.Clear();
-            listphong = busphong.getListPhong5();
+            listphong = busphong.getListPhongbytang(5);
             for (int i = 0; i < listphong.Rows.Count; i++)
             {
                 phongItem a = new phongItem();
